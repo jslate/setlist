@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jecky & Bonathan</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&family=Henny+Penny&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "cDJFs57kPubNaFN01",
+        });
+      })();
+    </script>
+    <style>
+      body {
+        font-family: "Fredoka", sans-serif;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 2rem;
+        color: #333;
+        background: linear-gradient(to bottom, #e1d442, #fcd34d);
+        border-radius: 12px;
+      }
+      p {
+        line-height: 24px;
+      }
+      h1 {
+        font-family: "Henny Penny", cursive;
+        font-size: 3rem;
+        text-align: center;
+        color: #ec4899;
+        margin-bottom: 0.25rem;
+      }
+      .tagline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-align: center;
+        font-style: italic;
+        font-size: 1.1rem;
+        color: #6b21a8;
+        margin-bottom: 2rem;
+        padding: 0.5rem 1rem;
+        background-color: #f3e8ff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      iframe {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: none;
+        margin: 1rem 0;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #ddd;
+        border: 4px solid #60a5fa;
+      }
+      h2 {
+        color: #4f46e5;
+        margin-top: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      input,
+      textarea {
+        font-size: 1rem;
+        padding: 0.5rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-family: Fredoka, sans-serif;
+      }
+      button {
+        font-size: 1rem;
+        padding: 0.5rem;
+        background-color: #ec4899;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .centered {
+        text-align: center;
+      }
+      .hidden {
+        display: none;
+      }
+      ul {
+        line-height: 20px;
+      }
+      .attribution_name {
+        margin: 0;
+        padding: 0 0 20px 0;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Jecky & Bonathan</h1>
+    <div class="centered">
+      <p class="tagline">🎵 Music and fun for kids of all ages.</p>
+    </div>
+
+    <p>
+      We are Jecky & Bonathan, a musical duo in the central Massachusetts area
+      that play music for kids, their families, and anyone who might be passing
+      by. With a variety of instruments and props, as well as songs that range
+      from wacky and weird to warm and wonderful, there's truly something for
+      everyone. We love audience participation, and everyone is encouraged to
+      sing, dance, and play along with us! We look forward to entertaining you
+      in the near future—just send us a note with the form below!
+    </p>
+
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/ZUNMqv16AuY?si=rstp4EdzTO-HZmqg"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe>
+
+    <h2>Upcoming Shows</h2>
+    <ul>
+      <li>🎶 June 1, 2025, 11AM – First Parish Church, Berlin, MA</li>
+      <li>
+        🎨 July 22 – Picnic and Outdoor Art Night, Berlin Public Library,
+        Berlin, MA (Time TBD)
+      </li>
+    </ul>
+
+    <h2>What People Say</h2>
+    <ul>
+      <li>
+        <em >"Jecky and Bonathan bring upbeat folksy energy in a fun and
+        entertaining family show. The addition of the accordion is unique and
+        both musicians are skilled and enthusiastic performers."</em >
+      </li>
+      <p class="attribution_name">—Hadley Roberts, Youth Services Librarian, Berlin Public Library</p>
+      <li>
+        <em
+          >"Jecky and Bonathan appeared in support of our theatrical production,
+          and by their attention to the music, the interests of the audience,
+          the atmosphere of the play, and their very approachable personalities,
+          turned our fun little drama into a spectacle worth noting."</em
+        >
+      </li>
+      <p class="attribution_name">—Jay Cross</p>
+    </ul>
+
+    <h2>Contact Us</h2>
+    <div id="thank-you" class="hidden" style="color: green; font-weight: bold">
+      Thank you for your message!
+    </div>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="email" name="email" placeholder="Your email" required />
+      <textarea
+        name="message"
+        placeholder="Your message"
+        rows="5"
+        required
+      ></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        const form = document.getElementById("contact-form");
+        const thankYou = document.getElementById("thank-you");
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          emailjs.sendForm("service_bwrow18","template_n5a5kkx", this).then(
+            () => {
+              form.reset();
+              form.style.display = "none";
+              thankYou.classList.remove("hidden");
+            },
+            (error) => {
+              console.error("FAILED...", error);
+              alert("Oops! Something went wrong. Please try again.");
+            }
+          );
+        });
+      };
+    </script>
+  </body>
+</html>

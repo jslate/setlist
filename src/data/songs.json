@@ -1,0 +1,124 @@
+[
+  {
+    "slug": "a-youre-adorable",
+    "title": "A You're Adorable",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": ""
+  },
+  {
+    "slug": "blue-food",
+    "title": "Blue Food",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": ""
+  },
+  {
+    "slug": "cant-sleep",
+    "title": "I'm Tired (But I Just Can't Sleep)",
+    "instrumentation": "Full band",
+    "audio": "/audio/2025-07-06-tired.m4a",
+    "notes": "Medium tempo, can be played with just a duo"
+  },
+  {
+    "slug": "down-by-a-castle",
+    "title": "Down by a Castle",
+    "instrumentation": "Duo",
+    "audio": "",
+    "notes": ""
+  },
+  {
+    "slug": "duck-and-kangaroo",
+    "title": "The Duck and the Kangaroo (Edward Lear)",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": ""
+  },
+  {
+    "slug": "easy-to-be-free",
+    "title": "Easy To Be Free",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": ""
+  },
+  {
+    "slug": "green-goo",
+    "title": "Green Goo",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": ""
+  },
+  {
+    "slug": "hey-little-raspberry",
+    "title": "Hey Little Raspberry",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "",
+    "holding": true
+  },
+  {
+    "slug": "hope-machine",
+    "title": "Hope Machine",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": ""
+  },
+  {
+    "slug": "manatee-song",
+    "title": "The Manatee Song",
+    "instrumentation": "Full band",
+    "audio": "/audio/2025-07-06-manatee.m4a",
+    "notes": "Reference track: Baby Beluga by Raffi"
+  },
+  {
+    "slug": "my-dame",
+    "title": "My Dame had a Lame Tame Crane",
+    "instrumentation": "Duo",
+    "audio": "",
+    "notes": ""
+  },
+  {
+    "slug": "new-friend",
+    "title": "New Friend",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "",
+    "holding": true
+  },
+  {
+    "slug": "space-cats",
+    "title": "Space Cats",
+    "instrumentation": "Full band",
+    "audio": "/audio/2025-07-06-space-cats.m4a",
+    "notes": "Reference track: Surfin' USA by The Beach Boys"
+  },
+  {
+    "slug": "the-fox",
+    "title": "The Fox",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": ""
+  },
+  {
+    "slug": "the-green-grass",
+    "title": "The Green Grass Grew All Around",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": ""
+  },
+  {
+    "slug": "undo",
+    "title": "Undo",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "",
+    "holding": true
+  },
+  {
+    "slug": "whos-pigs",
+    "title": "Who’s Pigs Be These",
+    "instrumentation": "Duo",
+    "audio": "",
+    "notes": ""
+  }
+]
