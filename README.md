@@ -2,6 +2,10 @@
 
 Static site for managing and displaying song chord charts.
 
+## Tailwind CSS
+
+Tailwind CSS is configured via the `src/style.css` directives and the `tailwind.config.js` at the project root. The config specifies scanning of `index.html`, all generated HTML pages under `html/`, and JS/TS files under `src/` so that JIT utilities are available in both dev and production builds.
+
 ## Prerequisites
 
 - Node.js (for Vite and Tailwind CSS)
@@ -26,7 +30,8 @@ Place song metadata in `src/data/songs.json`. Each entry should include:
 
 ## ChordPro files
 
-Add your song files in ChordPro format under the `chordpro/` directory. File names should match the `slug` values (e.g. `chordpro/cant-sleep.cho`).
+Add your song files in ChordPro format under the `src/chordpro/` directory. File names should match the `slug` values (e.g. `src/chordpro/cant-sleep.cho`).
+Pre-rendered PDFs (indicated by `"prerendered": true` in `songs.json`) should be placed in `src/pdf/` (e.g. `src/pdf/be-kind.pdf`).
 
 ### Generate PDF charts
 
@@ -34,17 +39,23 @@ Add your song files in ChordPro format under the `chordpro/` directory. File nam
 npm run gen:pdf
 ```
 
+This will generate individual song PDFs to the top-level `pdf/` directory and copy any pre-rendered PDFs from `src/pdf/`.
+
 ### Generate HTML charts
 
 ```bash
 npm run gen:html
 ```
 
+> This command now also injects Tailwind styling for `.title` and `.verse` elements in the generated HTML.
+
 ### Generate combined setlist PDF
 
 ```bash
 npm run gen:setlist
 ```
+
+The setlist PDF will also be output to the top-level `pdf/` directory.
 
 ## Development
 

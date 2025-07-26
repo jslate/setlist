@@ -7,9 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "gen:pdf": "mkdir -p public/pdf && for file in chordpro/*.cho; do chordpro \"$file\" -G -o public/pdf/$(basename \"$file\" .cho).pdf; done",
-    "gen:html": "mkdir -p public/html && for file in chordpro/*.cho; do chordpro \"$file\" -o public/html/$(basename \"$file\" .cho).html; done",
-    "gen:setlist": "node scripts/gen-setlist.cjs"
+    "gen:pdf": "node scripts/gen-pdf.cjs",
+    "gen:html": "node scripts/gen-html.cjs",
+    "gen:setlist": "node scripts/gen-setlist.cjs",
+    "gen:setlist:fullband": "node scripts/gen-setlist.cjs --fullband"
   },
   "devDependencies": {
     "vite": "^7.0.0"
