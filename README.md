@@ -57,6 +57,8 @@ npm run gen:setlist
 
 The setlist PDF will also be output to the top-level `pdf/` directory.
 
+> **Note:** The top-level `html/` and `pdf/` directories are committed to version control to provide all generated charts and PDFs on environments without ChordPro (e.g. render.com). After updating ChordPro files, run `npm run gen:html` and `npm run gen:pdf` locally and commit the changes in `html/` and `pdf/`.
+
 ## Development
 
 Install dependencies and start the dev server:
