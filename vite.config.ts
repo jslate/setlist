@@ -38,6 +38,16 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input,
+      output: {
+        assetFileNames: assetInfo => {
+          if (assetInfo.names[0].endsWith('.pdf')) {
+            // keep original name under dist/pdf/
+            return 'pdf/[name][extname]'
+          }
+          // fallback for other assets
+          return 'assets/[name]-[hash][extname]'
+        }
+      }
     },
   },
 })
