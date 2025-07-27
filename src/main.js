@@ -54,11 +54,13 @@ function createSongItem(song) {
     pdfLink.className = 'text-blue-500 hover:underline'
     links.appendChild(pdfLink)
 
-    const htmlLink = document.createElement('a')
-    htmlLink.href = `/html/${song.slug}.html`
-    htmlLink.textContent = 'HTML'
-    htmlLink.className = 'text-blue-500 hover:underline'
-    links.appendChild(htmlLink)
+    if (song.hasHtml) {
+      const htmlLink = document.createElement('a')
+      htmlLink.href = `/html/${song.slug}.html`
+      htmlLink.textContent = 'HTML'
+      htmlLink.className = 'text-blue-500 hover:underline'
+      links.appendChild(htmlLink)
+    }
 
     item.appendChild(links)
   }

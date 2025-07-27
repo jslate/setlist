@@ -10,7 +10,8 @@
     "gen:pdf": "node scripts/gen-pdf.cjs",
     "gen:html": "node scripts/gen-html.cjs",
     "gen:setlist": "node scripts/gen-setlist.cjs",
-    "gen:setlist:fullband": "node scripts/gen-setlist.cjs --fullband"
+    "gen:setlist:fullband": "node scripts/gen-setlist.cjs --fullband",
+    "gen:all": "npm run gen:pdf && npm run gen:html && npm run gen:setlist && npm run gen:setlist:fullband"
   },
   "devDependencies": {
     "vite": "^7.0.0"

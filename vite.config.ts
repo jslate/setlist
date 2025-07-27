@@ -17,6 +17,7 @@ const songPDFFiles = fs.existsSync(pdfDir)
 
 const input = {
   main: resolve(__dirname, 'index.html'),
+  printableSongList: resolve(__dirname, 'printable-song-list.html'),
   ...Object.fromEntries(
     songHTMLFiles.map(file => {
       const name = file.replace(/\.html$/, '')
