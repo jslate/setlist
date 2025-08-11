@@ -145,5 +145,12 @@
     "audio": "",
     "notes": "",
     "hasHtml": true
+  },
+  {
+    "slug": "little-white-duck",
+    "title": "The Little White Duck",
+    "instrumentation": "Full band",
+    "notes": "Reference track: The Little White Duck by Burl Ives",
+    "hasHtml": true
   }
 ]
