@@ -32,9 +32,10 @@ fs.readdirSync(chordDir)
 <link rel="stylesheet" href="/src/style.css">
 `);
 
-    // Inject Tailwind classes on .title and .verse elements
+    // Inject Tailwind classes on .title, .verse, and .songline elements
     html = html.replace(/class="(title)"/g, 'class="$1 font-bold text-2xl mb-4"');
     html = html.replace(/class="(verse)"/g, 'class="$1 whitespace-pre-wrap bg-gray-100 p-2 rounded mb-4"');
+    html = html.replace(/class="(songline)"/g, 'class="$1 border-separate border-spacing-1 mb-2"');
 
     fs.writeFileSync(dstPath, html, 'utf8');
   });

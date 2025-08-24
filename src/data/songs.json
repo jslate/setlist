@@ -80,6 +80,14 @@
     "hasHtml": true
   },
   {
+    "slug": "cammie",
+    "title": "Cammie",
+    "instrumentation": "Full band",
+    "audio": "/audio/2025-08-24-cammie.m4a",
+    "notes": "",
+    "hasHtml": true
+  },
+  {
     "slug": "my-dame",
     "title": "My Dame had a Lame Tame Crane",
     "instrumentation": "Duo",
