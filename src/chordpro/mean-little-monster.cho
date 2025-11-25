@@ -3,21 +3,24 @@
 {key: E}
 {time: 4/4}
 
+{comment: Riff: figure A}
 #-----------------------------------
 # CHORUS
 #-----------------------------------
 
+{comment: Chorus}
 [E]I’ve got this mean little monster and he will not let me be
 he’s not a monster with a body or a monster you can see
 he just [B]sits inside my brain watching reruns on TV
 [E]C’mon little monster [B]won’t you let me [E]be
 
-{comment: Riff: e e g d c# a b (x2)}
+{comment: Riff: figure B}
 
 #-----------------------------------
 # VERSE 1
 #-----------------------------------
 
+{comment: Verse 1}
 Like [E]any TV monster, he has his special shows
 he [A]loves to watch the episodes that [E]he already knows
 his [A]favorites are the ones that [E]always make you cringe
@@ -26,25 +29,25 @@ Some[B]times it’s only one or two and sometimes it’s a binge.
 {comment: (Sometimes it's only one or two, and sometimes it's a binge.)}
 
 #-----------------------------------
-# VERSE 2
-#-----------------------------------
-
-His [E]favorite time for watching is when I go to bed
-He [A]turns up the volume on the [E]TV in my head
-I [A]wish I could ignore it but the [E]screen is just too bright
-[B]Man I hope my monster doesn’t keep me up all night.
-
-{comment: (Man I really hope that I can keep him up all night!)}
-
-#-----------------------------------
 # CHORUS
 #-----------------------------------
 {comment: Repeat chorus here}
 
 #-----------------------------------
+# VERSE 2
+#-----------------------------------
+
+{comment: Verse 2}
+His [E]favorite time for watching is when I go to bed
+He [A]turns up the volume on the [E]TV in my head
+I [A]wish I could ignore it but the [E]screen is just too bright
+[B]Man I hope my monster doesn’t keep me up all night.
+
+#-----------------------------------
 # VERSE 3
 #-----------------------------------
 
+{comment: Verse 3}
 [E]If I try to join him he gobbles all the snacks
 he [A]pilfers the remote and he [E]never gives it back
 it’s [A]gotta be his shows and on that [E]he’ll never bend
@@ -53,9 +56,17 @@ he’s [B]not the kind of monster who could ever be a friend
 {comment: (I'm not the kind of monster who could ever be a friend.)}
 
 #-----------------------------------
+# CHORUS
+#-----------------------------------
+{comment: Repeat chorus here}
+
+{comment: Riff: figure C}
+
+#-----------------------------------
 # BRIDGE
 #-----------------------------------
 
+{comment: Bridge}
 [A]It’s true I’ve got a monster [E]but I know I’m not alone
 [A]you might even have a [E]monster of your own
 [A]And if it’s like mine [E]it may try to say
@@ -72,11 +83,11 @@ they [A]might even tell you ’bout the [E]monster that they’ve got.
 And [A]you can tell that someone that they [E]can talk to you
 if they [B]wanna talk about the wicked things that monsters do.
 
-{comment: (Things that monsters do, things that monsters do… all the clever little things that wicked monsters do.)}
+{comment: (All the clever little things that wicked monsters do.)}
 
 #-----------------------------------
 # CHORUS (final)
 #-----------------------------------
 {comment: Chorus}
-{comment: Riff}
+{comment: Riff: figure A}
 {comment: End of song}
