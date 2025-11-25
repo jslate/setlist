@@ -130,6 +130,22 @@
     "hasHtml": false
   },
   {
+    "slug": "mean-little-monster",
+    "title": "Mean Little Monster",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": "",
+    "hasHtml": true
+  },
+  {
+    "slug": "artificial-tree",
+    "title": "Artificial Tree",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": "",
+    "hasHtml": true
+  },
+  {
     "slug": "the-green-grass",
     "title": "The Green Grass Grew All Around",
     "instrumentation": "Full band",
