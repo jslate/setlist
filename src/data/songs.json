@@ -176,5 +176,21 @@
     "instrumentation": "Full band",
     "notes": "Reference track: The Little White Duck by Burl Ives",
     "hasHtml": true
+  },
+  {
+    "slug": "the-little-nut-tree",
+    "title": "The Little Nut Tree",
+    "instrumentation": "Duo",
+    "audio": "",
+    "notes": "",
+    "hasHtml": true
+  },
+  {
+    "slug": "the-lovely-chair",
+    "title": "The Lovely Chair",
+    "instrumentation": "duo",
+    "audio": "",
+    "notes": "",
+    "hasHtml": true
   }
 ]
