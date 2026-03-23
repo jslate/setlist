@@ -3,11 +3,14 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { getAnnotatedChordProContent } = require('./prependNotes.cjs');
+const { copyIfStale, isOutputStale } = require('./generator-utils.cjs');
 
 // Directories and metadata
 const chordDir = path.resolve(__dirname, '../src/chordpro');
 const pdfDir   = path.resolve(__dirname, '../pdf');
 const dataPath = path.resolve(__dirname, '../src/data/songs.json');
+const notesScriptPath = path.resolve(__dirname, './prependNotes.cjs');
+const scriptPath = path.resolve(__dirname, './gen-pdf.cjs');
 
 // Ensure output directory exists
 fs.mkdirSync(pdfDir, { recursive: true });
@@ -18,7 +21,7 @@ if (fs.existsSync(srcPdfDir)) {
   fs.readdirSync(srcPdfDir)
     .filter(file => file.endsWith('.pdf'))
     .forEach(file => {
-      fs.copyFileSync(path.join(srcPdfDir, file), path.join(pdfDir, file));
+      copyIfStale(path.join(srcPdfDir, file), path.join(pdfDir, file));
     });
 }
 
@@ -36,6 +39,14 @@ fs.readdirSync(chordDir)
   .filter(file => file.endsWith('.cho'))
   .forEach(file => {
     const slug = path.basename(file, '.cho');
+    const outPath = path.join(pdfDir, `${slug}.pdf`);
+    const srcPath = path.join(chordDir, file);
+    const dependencies = [srcPath, dataPath, notesScriptPath, scriptPath];
+
+    if (!isOutputStale(outPath, dependencies)) {
+      return;
+    }
+
     const tempContent = getAnnotatedChordProContent(slug, chordDir, songs);
     if (!tempContent) return;
 
@@ -44,7 +55,6 @@ fs.readdirSync(chordDir)
     fs.writeFileSync(tempPath, tempContent, 'utf8');
 
     // Generate PDF via chordpro CLI
-    const outPath = path.join(pdfDir, `${slug}.pdf`);
     const res = spawnSync('chordpro', [tempPath, '-G', '-o', outPath], {
       stdio: 'inherit',
     });

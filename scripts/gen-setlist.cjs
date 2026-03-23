@@ -4,11 +4,15 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { getAnnotatedChordProContent } = require('./prependNotes.cjs');
+const { copyIfStale, isOutputStale } = require('./generator-utils.cjs');
 
 // Paths
 const chordDir = path.resolve(__dirname, '../src/chordpro');
 const pdfDir = path.resolve(__dirname, '../pdf');
 const dataPath = path.resolve(__dirname, '../src/data/songs.json');
+const notesScriptPath = path.resolve(__dirname, './prependNotes.cjs');
+const utilScriptPath = path.resolve(__dirname, './generator-utils.cjs');
+const scriptPath = path.resolve(__dirname, './gen-setlist.cjs');
 
 // Flags
 const fullBand = process.argv.includes('--fullband');
@@ -36,7 +40,7 @@ if (fs.existsSync(srcPdfDir)) {
   fs.readdirSync(srcPdfDir)
     .filter(file => file.endsWith('.pdf'))
     .forEach(file => {
-      fs.copyFileSync(path.join(srcPdfDir, file), path.join(pdfDir, file));
+      copyIfStale(path.join(srcPdfDir, file), path.join(pdfDir, file));
     });
 }
 
@@ -55,20 +59,36 @@ filteredSongs.forEach((song) => {
       return;
     }
   } else {
-    const content = getAnnotatedChordProContent(song.slug, chordDir, songs);
-    if (!content || content.trim() === '') {
-      console.warn(`No content for ${song.slug}, skipping PDF generation`);
-      return;
+    const sourceChoPath = path.join(chordDir, `${song.slug}.cho`);
+    const dependencies = [
+      sourceChoPath,
+      dataPath,
+      notesScriptPath,
+      utilScriptPath,
+      scriptPath,
+    ];
+
+    if (isOutputStale(pdfPath, dependencies)) {
+      const content = getAnnotatedChordProContent(song.slug, chordDir, songs);
+      if (!content || content.trim() === '') {
+        console.warn(`No content for ${song.slug}, skipping PDF generation`);
+        return;
+      }
+
+      const tempChoPath = path.join(chordDir, `${song.slug}.tmp.cho`);
+      fs.writeFileSync(tempChoPath, content, 'utf8');
+
+      const result = spawnSync('chordpro', [tempChoPath, '-G', '-o', pdfPath], { stdio: 'inherit' });
+      fs.unlinkSync(tempChoPath);
+      if (result.error || result.status !== 0) {
+        console.error(`Error generating PDF for ${song.slug}`);
+        process.exit(1);
+      }
     }
 
-    const tempChoPath = path.join(chordDir, `${song.slug}.tmp.cho`);
-    fs.writeFileSync(tempChoPath, content, 'utf8');
-
-    const result = spawnSync('chordpro', [tempChoPath, '-G', '-o', pdfPath], { stdio: 'inherit' });
-    fs.unlinkSync(tempChoPath);
-    if (result.error || result.status !== 0) {
-      console.error(`Error generating PDF for ${song.slug}`);
-      process.exit(1);
+    if (!fs.existsSync(pdfPath)) {
+      console.warn(`Missing generated PDF: ${pdfPath}`);
+      return;
     }
   }
 

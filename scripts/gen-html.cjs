@@ -2,9 +2,12 @@
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
+const { isOutputStale } = require('./generator-utils.cjs');
 
 const chordDir = path.resolve(__dirname, '../src/chordpro');
 const outDir = path.resolve(__dirname, '../html');
+const stylePath = path.resolve(__dirname, '../src/style.css');
+const scriptPath = path.resolve(__dirname, './gen-html.cjs');
 
 // Ensure output directory exists
 fs.mkdirSync(outDir, { recursive: true });
@@ -16,6 +19,11 @@ fs.readdirSync(chordDir)
     const slug = path.basename(file, '.cho');
     const srcPath = path.join(chordDir, file);
     const dstPath = path.join(outDir, `${slug}.html`);
+    const dependencies = [srcPath, stylePath, scriptPath];
+
+    if (!isOutputStale(dstPath, dependencies)) {
+      return;
+    }
 
     // Run chordpro to generate raw HTML
     const res = spawnSync('chordpro', [srcPath, '-o', dstPath]);
