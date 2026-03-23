@@ -192,5 +192,21 @@
     "audio": "",
     "notes": "",
     "hasHtml": true
+  },
+  {
+    "slug": "a-little-bit-strange",
+    "title": "A Little Bit Strange",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": "",
+    "hasHtml": true
+  },
+  {
+    "slug": "friends-far-away",
+    "title": "Friends Far Away",
+    "instrumentation": "Full band",
+    "audio": "",
+    "notes": "",
+    "hasHtml": true
   }
 ]
