@@ -18,6 +18,9 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
+    "abcjs": "^6.6.4",
+    "jsdom": "^29.1.1",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4.1.11"
   }
 }

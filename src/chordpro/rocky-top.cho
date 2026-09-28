@@ -1,33 +1,43 @@
 {title: Rocky Top}
 {artist: Felice and Boudleaux Bryant}
-{key: C}
+{key: D}
 {time: 4/4}
 
-{comment: Verse 1}
-[C]Wish that I was [F]on ole [C]Rocky Top [Am]down in the [G]Tennessee [C]hills
-[C]Ain't no smoggy [F]smoke on [C]Rocky Top, [Am]ain't no [G]telephone [C]bills
+{start_of_abc: Verse 1 | width=480 staffwidth=1000}
+M:4/4
+L:1/4
+K:D
+"D"A A A A | "G"B B "D"A/2F/2 D | "Bm"D D/2D/2 "A"E/2D/2 E | "D"F2 z2 |
+w: Wish that I was on ole Rock-y Top down in the Ten-nes-see hills
+"D"A A A A | "G"B B "D"A/2F/2 D | "Bm"D D/2D/2 "A"E/2D/2 E | "D"F2 z2 |
+w: Ain't no smog-gy smoke on Rock-y Top, ain't no tel-e-phone _ bills
+"D"A A A A | "G"B B "D"A/2F/2 D | "Bm"D D/2D/2 "A"E/2D/2 E | "D"F2 z2 |
+w: Once I had a girl on Rock-y Top, half bear the o-ther half cat
+"D"A A A A | B "G"B "D"A/2F/2 D | D "Bm"D/2D/2 "A"E/2D/2 E | "D"F2 z2 |
+w: Wild as a mink as sweet as so-da pop, I still dream a-bout that
+{end_of_abc}
 
-[C]Once I had a [F]girl on [C]Rocky Top, [Am]half bear the [G]other half [C]cat
-[C]Wild as a mink as [F]sweet as [C]soda pop, [Am]I still [G]dream about [C]that
-
-{comment: Chorus}
-[Am]Rocky Top, you'll [G]always be [Bb]home sweet home to [F]me
-Good ole [C]Rocky Top - Rocky Top [Bb]Tenne[C]ssee, Rocky Top [Bb]Tenne[C]ssee
-
-{comment: Break}
+{start_of_abc: Chorus | width=480 staffwidth=1000}
+M:4/4
+L:1/4
+K:D
+"Bm"B/2B/2 B2 B | "A"A A A2 | "C"=c c c/2B/2 A | "G"B2 z2 |
+w: Rock-y Top, you'll al-ways be home sweet home to me
+"G"B2 B2   |"D"A/2F/2 D z2 | D/2D/2 D   "C"E E | F2 z2  | D/2D/2 D   "C"E E | D2 z2  |
+w: Good ole Rock-y    Top    Rock-y Top Ten-nes-see,       Rock-y Top Ten-nes-see
+{end_of_abc}
 
 {comment: Verse 2}
-[C]Once two strangers [F]climbed ole [C]Rocky Top [Am]lookin' for a [G]moonshine [C]still.
-[C]Strangers ain't come [F]down from [C]Rocky Top, [Am]reckon they [G]never [C]will.
-
-[C]Corn won't grow at [F]all on [C]Rocky Top, [Am]dirt's too [G]rocky by [C]far.
-[C]That's why all the [F]folks on [C]Rocky Top [Am]get their [G]corn from a [C]jar.
+[D]Once two strangers [G]climbed ole [D]Rocky Top [Bm]lookin' for a [A]moonshine [D]still.
+[D]Strangers ain't come [G]down from [D]Rocky Top, [Bm]reckon they [A]never [D]will.
+[D]Corn won't grow at [G]all on [D]Rocky Top, [Bm]dirt's too [A]rocky by [D]far.
+[D]That's why all the [G]folks on [D]Rocky Top [Bm]get their [A]corn from a [D]jar.
 
 {comment: Chorus}
 {comment: Break}
 
 {comment: Verse 3}
-[C]I've had years of [F]cramped up [C]city life; [Am]stuck like a [G]duck in a [C]pen.
-[C]All I know is [F]it's a pity [C]life can't be [Am]simple a[G]gain.[C]
+[D]I've had years of [G]cramped up [D]city life; [Bm]stuck like a [A]duck in a [D]pen.
+[D]All I know is [G]it's a pity [D]life can't be [Bm]simple a[A]gain.[D]
 
 {comment: Chorus}

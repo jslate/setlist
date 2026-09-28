@@ -4,51 +4,55 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 const { getAnnotatedChordProContent } = require('./prependNotes.cjs');
 const { copyIfStale, isOutputStale } = require('./generator-utils.cjs');
+const { preprocessAbc } = require('./renderAbc.cjs');
 
 // Directories and metadata
 const chordDir = path.resolve(__dirname, '../src/chordpro');
 const pdfDir   = path.resolve(__dirname, '../pdf');
 const dataPath = path.resolve(__dirname, '../src/data/songs.json');
+const abcRenderedDir = path.resolve(__dirname, '../src/abc-rendered');
 const notesScriptPath = path.resolve(__dirname, './prependNotes.cjs');
+const abcScriptPath = path.resolve(__dirname, './renderAbc.cjs');
 const scriptPath = path.resolve(__dirname, './gen-pdf.cjs');
 
-// Ensure output directory exists
-fs.mkdirSync(pdfDir, { recursive: true });
+async function main() {
+  // Ensure output directory exists
+  fs.mkdirSync(pdfDir, { recursive: true });
 
-// Copy pre-rendered PDFs from src/pdf to pdf directory
-const srcPdfDir = path.resolve(__dirname, '../src/pdf');
-if (fs.existsSync(srcPdfDir)) {
-  fs.readdirSync(srcPdfDir)
-    .filter(file => file.endsWith('.pdf'))
-    .forEach(file => {
-      copyIfStale(path.join(srcPdfDir, file), path.join(pdfDir, file));
-    });
-}
+  // Copy pre-rendered PDFs from src/pdf to pdf directory
+  const srcPdfDir = path.resolve(__dirname, '../src/pdf');
+  if (fs.existsSync(srcPdfDir)) {
+    fs.readdirSync(srcPdfDir)
+      .filter(file => file.endsWith('.pdf'))
+      .forEach(file => {
+        copyIfStale(path.join(srcPdfDir, file), path.join(pdfDir, file));
+      });
+  }
 
-// Load song metadata
-let songs = [];
-try {
-  songs = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-} catch (err) {
-  console.error('Could not read songs.json:', err.message);
-  process.exit(1);
-}
+  // Load song metadata
+  let songs = [];
+  try {
+    songs = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  } catch (err) {
+    console.error('Could not read songs.json:', err.message);
+    process.exit(1);
+  }
 
-// Process each ChordPro file
-fs.readdirSync(chordDir)
-  .filter(file => file.endsWith('.cho'))
-  .forEach(file => {
+  const files = fs.readdirSync(chordDir).filter(file => file.endsWith('.cho'));
+  for (const file of files) {
     const slug = path.basename(file, '.cho');
     const outPath = path.join(pdfDir, `${slug}.pdf`);
     const srcPath = path.join(chordDir, file);
-    const dependencies = [srcPath, dataPath, notesScriptPath, scriptPath];
+    const dependencies = [srcPath, dataPath, notesScriptPath, abcScriptPath, scriptPath];
 
     if (!isOutputStale(outPath, dependencies)) {
-      return;
+      continue;
     }
 
-    const tempContent = getAnnotatedChordProContent(slug, chordDir, songs);
-    if (!tempContent) return;
+    let tempContent = getAnnotatedChordProContent(slug, chordDir, songs);
+    if (!tempContent) continue;
+
+    ({ content: tempContent } = await preprocessAbc(tempContent, { slug, renderedDir: abcRenderedDir }));
 
     // Write to temporary file
     const tempPath = path.join(chordDir, `${slug}.tmp.cho`);
@@ -63,6 +67,12 @@ fs.readdirSync(chordDir)
       console.error(`Error generating PDF for ${file}`);
       process.exit(1);
     }
-  });
+  }
 
-console.log('Generated PDFs (with notes and reference tracks) in pdf/');
+  console.log('Generated PDFs (with notes and reference tracks) in pdf/');
+}
+
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
