@@ -248,5 +248,130 @@
     "audio": "",
     "notes": "",
     "hasHtml": true
+  },
+  {
+    "slug": "furr",
+    "title": "Furr (Blitzen Trapper)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "",
+    "hasHtml": true
+  },
+  {
+    "slug": "the-blob",
+    "title": "The Blob (The Five Blobs)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "",
+    "tags": ["halloween"],
+    "prerendered": true,
+    "hasHtml": false,
+    "alternates": [
+      { "label": "Rhythm only", "file": "the-blob-rhythm.pdf" }
+    ]
+  },
+  {
+    "slug": "monster-mash",
+    "title": "Monster Mash (Bobby \"Boris\" Pickett)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "Chart coming soon",
+    "tags": ["halloween"],
+    "hasHtml": true
+  },
+  {
+    "slug": "devil-in-disguise",
+    "title": "(You're The) Devil In Disguise (Elvis Presley)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "Chart coming soon",
+    "tags": ["halloween"],
+    "hasHtml": true
+  },
+  {
+    "slug": "taint-no-sin",
+    "title": "'Taint No Sin (To Take Off Your Skin) (Fred Hall)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "",
+    "tags": ["halloween"],
+    "prerendered": true,
+    "hasHtml": false
+  },
+  {
+    "slug": "ghost-of-john",
+    "title": "Ghost of John (Sue Schnitzer)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "Chart coming soon",
+    "tags": ["halloween"],
+    "hasHtml": true
+  },
+  {
+    "slug": "purple-people-eater",
+    "title": "The Purple People Eater (Sheb Wooley)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "Chart coming soon",
+    "tags": ["halloween"],
+    "hasHtml": true
+  },
+  {
+    "slug": "mysterious-mose",
+    "title": "Mysterious Mose (Rube Bloom)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "",
+    "tags": ["halloween"],
+    "prerendered": true,
+    "hasHtml": false,
+    "alternates": [
+      { "label": "Bb", "file": "mysterious-mose-Bb.pdf" }
+    ]
+  },
+  {
+    "slug": "addams-family",
+    "title": "The Addams Family Theme (Vic Mizzy)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "Chart coming soon",
+    "tags": ["halloween"],
+    "hasHtml": true
+  },
+  {
+    "slug": "spooky-scary-skeletons",
+    "title": "Spooky, Scary Skeletons (Andrew Gold)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "Chart coming soon",
+    "tags": ["halloween"],
+    "hasHtml": true
+  },
+  {
+    "slug": "ghost-riders",
+    "title": "(Ghost) Riders In the Sky (Johnny Cash)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "Chart coming soon",
+    "tags": ["halloween"],
+    "hasHtml": true
+  },
+  {
+    "slug": "people-are-strange",
+    "title": "People Are Strange (The Doors)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "Chart coming soon",
+    "tags": ["halloween"],
+    "hasHtml": true
+  },
+  {
+    "slug": "zombie-jamboree",
+    "title": "Zombie Jamboree (Back To Back) (Harry Belafonte)",
+    "instrumentation": "",
+    "audio": "",
+    "notes": "Chart coming soon",
+    "tags": ["halloween"],
+    "hasHtml": true
   }
 ]

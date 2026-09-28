@@ -16,6 +16,7 @@ const scriptPath = path.resolve(__dirname, './gen-setlist.cjs');
 
 // Flags
 const fullBand = process.argv.includes('--fullband');
+const halloween = process.argv.includes('--halloween');
 
 // Read metadata
 let songs = [];
@@ -29,7 +30,8 @@ try {
 // Filter and prepare
 const filteredSongs = songs
   .filter(song => !song.holding)
-  .filter(song => !fullBand || song.instrumentation === 'Full band');
+  .filter(song => !fullBand || song.instrumentation === 'Full band')
+  .filter(song => !halloween || (Array.isArray(song.tags) && song.tags.includes('halloween')));
 
 // Ensure output directory exists
 fs.mkdirSync(pdfDir, { recursive: true });
@@ -120,10 +122,10 @@ if (tocRes.error || tocRes.status !== 0) {
 }
 
 // Merge all PDFs
-const finalOutput = path.join(
-  pdfDir,
-  fullBand ? 'setlist-fullband.pdf' : 'setlist.pdf'
-);
+let finalName = 'setlist.pdf';
+if (fullBand) finalName = 'setlist-fullband.pdf';
+else if (halloween) finalName = 'setlist-halloween.pdf';
+const finalOutput = path.join(pdfDir, finalName);
 
 const allPdfs = [tocPdfPath, ...songPDFs];
 const unite = spawnSync('pdfunite', [...allPdfs, finalOutput], { stdio: 'inherit' });
