@@ -1,30 +1,47 @@
 {title: The Addams Family Theme}
 {artist: Vic Mizzy}
+{key: A}
+{time: 4/4}
 
-They're creepy and they're kooky
-Mysterious and spooky
-They're all together ooky
-The Addams family
+{start_of_abc: Opening figure | width=480 staffwidth=1000}
+X: 1
+M: 4/4
+L: 1/8
+(3E^F^G|A z z2 z2 (3^F^G^A|B z z2 z2(3^F^G^A|B z (3^F^G^A B z (3E^F^G|A z z2 z4
+{end_of_abc}
 
-Their house is a museum
-When people come to see 'em
-They really are a scream
-The Addams family
+{comment: Verse 1}
+They're [A]creepy and they're [Bm]kooky
+Mys[E7]terious and [A]spooky
+They're all together [Bm]ooky
+The [E7]Addams fami[A]ly
 
+{comment: Verse 2}
+Their [A]house is a mu[Bm]seum
+When [E7]people come to [A]see 'em
+They really are a [Bm]scream
+The [E7]Addams fami[A]ly
+
+{comment: Opening figure with these words + second finger snap}
 Neat
 Sweet
 Petite
 
-So, put a witch's shawl on
-A broomstick you can crawl on
-We're gonna play a call on
-The Addams family
+{comment: Bridge}
+So, [A]put a witch's [Bm]shawl on
+A [E7]broomstick you can [A]crawl on
+We're gonna pay a [Bm]call on
+The [E7]Addams fami[A]ly
 
-They're creepy and they're kooky
-Mysterious and spooky
-They're all together ooky
-The Addams family
+{comment: Verse 3}
+They're [A]creepy and they're [Bm]kooky
+Mys[E7]terious and [A]spooky
+They're all together [Bm]ooky
+The [E7]Addams fami[A]ly
 
+{comment: Finger snap with these words}
 Strange
 Deranged
-The Addams family
+The [E7]Addams fami[A]ly
+
+{comment: Repeat opening figure with weird sounds between}
