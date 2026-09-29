@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
-const { isOutputStale } = require('./generator-utils.cjs');
+const { needsRebuild, markBuilt } = require('./generator-utils.cjs');
 const { preprocessAbc, extractAbcBlocks } = require('./renderAbc.cjs');
 
 const chordDir = path.resolve(__dirname, '../src/chordpro');
@@ -11,6 +11,7 @@ const stylePath = path.resolve(__dirname, '../src/style.css');
 const abcRenderedDir = path.resolve(__dirname, '../src/abc-rendered');
 const abcScriptPath = path.resolve(__dirname, './renderAbc.cjs');
 const scriptPath = path.resolve(__dirname, './gen-html.cjs');
+const cacheFile = path.resolve(__dirname, '../.build-cache.json');
 
 async function main() {
   fs.mkdirSync(outDir, { recursive: true });
@@ -20,9 +21,14 @@ async function main() {
     const slug = path.basename(file, '.cho');
     const srcPath = path.join(chordDir, file);
     const dstPath = path.join(outDir, `${slug}.html`);
-    const dependencies = [srcPath, stylePath, abcScriptPath, scriptPath];
+    const deps = [
+      { path: srcPath },
+      { path: stylePath },
+      { path: abcScriptPath },
+      { path: scriptPath },
+    ];
 
-    if (!isOutputStale(dstPath, dependencies)) {
+    if (!needsRebuild(dstPath, cacheFile, deps)) {
       continue;
     }
 
@@ -73,6 +79,7 @@ async function main() {
     }
 
     fs.writeFileSync(dstPath, html, 'utf8');
+    markBuilt(cacheFile, dstPath, deps);
   }
 
   console.log('Generated and styled HTML pages in html');

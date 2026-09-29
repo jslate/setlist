@@ -27,3 +27,5 @@ dist-ssr
 
 tmp
 src/abc-rendered
+.build-cache.json
+pdf/__toc__*.pdf

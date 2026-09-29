@@ -12,7 +12,7 @@ const songHTMLFiles = fs.existsSync(htmlDir)
   : []
 
 const songPDFFiles = fs.existsSync(pdfDir)
-  ? fs.readdirSync(pdfDir).filter(f => f.endsWith('.pdf'))
+  ? fs.readdirSync(pdfDir).filter(f => f.endsWith('.pdf') && !f.startsWith('__toc__'))
   : []
 
 const input = {

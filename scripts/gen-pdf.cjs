@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { getAnnotatedChordProContent } = require('./prependNotes.cjs');
-const { copyIfStale, isOutputStale } = require('./generator-utils.cjs');
+const { copyIfChanged, needsRebuild, markBuilt, songPdfDeps } = require('./generator-utils.cjs');
 const { preprocessAbc } = require('./renderAbc.cjs');
 
 // Directories and metadata
@@ -11,12 +11,9 @@ const chordDir = path.resolve(__dirname, '../src/chordpro');
 const pdfDir   = path.resolve(__dirname, '../pdf');
 const dataPath = path.resolve(__dirname, '../src/data/songs.json');
 const abcRenderedDir = path.resolve(__dirname, '../src/abc-rendered');
-const notesScriptPath = path.resolve(__dirname, './prependNotes.cjs');
-const abcScriptPath = path.resolve(__dirname, './renderAbc.cjs');
-const scriptPath = path.resolve(__dirname, './gen-pdf.cjs');
+const cacheFile = path.resolve(__dirname, '../.build-cache.json');
 
 async function main() {
-  // Ensure output directory exists
   fs.mkdirSync(pdfDir, { recursive: true });
 
   // Copy pre-rendered PDFs from src/pdf to pdf directory
@@ -25,7 +22,7 @@ async function main() {
     fs.readdirSync(srcPdfDir)
       .filter(file => file.endsWith('.pdf'))
       .forEach(file => {
-        copyIfStale(path.join(srcPdfDir, file), path.join(pdfDir, file));
+        copyIfChanged(path.join(srcPdfDir, file), path.join(pdfDir, file));
       });
   }
 
@@ -42,10 +39,9 @@ async function main() {
   for (const file of files) {
     const slug = path.basename(file, '.cho');
     const outPath = path.join(pdfDir, `${slug}.pdf`);
-    const srcPath = path.join(chordDir, file);
-    const dependencies = [srcPath, dataPath, notesScriptPath, abcScriptPath, scriptPath];
+    const deps = songPdfDeps({ slug, chordDir, dataPath });
 
-    if (!isOutputStale(outPath, dependencies)) {
+    if (!needsRebuild(outPath, cacheFile, deps)) {
       continue;
     }
 
@@ -54,11 +50,9 @@ async function main() {
 
     ({ content: tempContent } = await preprocessAbc(tempContent, { slug, renderedDir: abcRenderedDir }));
 
-    // Write to temporary file
     const tempPath = path.join(chordDir, `${slug}.tmp.cho`);
     fs.writeFileSync(tempPath, tempContent, 'utf8');
 
-    // Generate PDF via chordpro CLI
     const res = spawnSync('chordpro', [tempPath, '-G', '-o', outPath], {
       stdio: 'inherit',
     });
@@ -67,6 +61,8 @@ async function main() {
       console.error(`Error generating PDF for ${file}`);
       process.exit(1);
     }
+
+    markBuilt(cacheFile, outPath, deps);
   }
 
   console.log('Generated PDFs (with notes and reference tracks) in pdf/');
