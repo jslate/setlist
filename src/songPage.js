@@ -1,8 +1,8 @@
 import './style.css'
 
 const THEME_KEY = 'chart-theme'
-const MIN_SPEED = 3
-const MAX_SPEED = 150
+const MIN_SPEED = 1
+const MAX_SPEED = 40
 const DEFAULT_SPEED = 12
 
 const root = document.querySelector('.song-page') || document.body
@@ -82,6 +82,14 @@ let lastTs = 0
 let accum = 0
 let userScrollTs = 0
 
+const songEl = document.querySelector('.song')
+if (songEl) songEl.style.willChange = 'transform'
+
+function applySubpixel(offset) {
+  if (!songEl) return
+  songEl.style.transform = offset ? `translate3d(0, -${offset}px, 0)` : ''
+}
+
 function startWakeLock() {
   if (!('wakeLock' in navigator)) return
   navigator.wakeLock.request('screen').then(
@@ -111,6 +119,7 @@ function setPlaying(next) {
     startWakeLock()
     requestAnimationFrame(tick)
   } else {
+    applySubpixel(0)
     releaseWakeLock()
   }
 }
@@ -128,10 +137,12 @@ function tick(ts) {
     window.scrollBy(0, px)
     const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1
     if (atBottom) {
+      applySubpixel(0)
       setPlaying(false)
       return
     }
   }
+  applySubpixel(accum)
   requestAnimationFrame(tick)
 }
 
