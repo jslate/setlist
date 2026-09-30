@@ -1,5 +1,152 @@
 @import "tailwindcss";
 
+/* ---------- Song chart pages ---------- */
+
+.song-page {
+  --chart-fg: #111827;
+  --chart-bg: #ffffff;
+  --chart-muted: #6b7280;
+  --chart-chord: #1d4ed8;
+  --chart-accent: #2563eb;
+  --chart-border: #e5e7eb;
+  --chart-bar-bg: rgba(255, 255, 255, 0.95);
+  background: var(--chart-bg);
+  color: var(--chart-fg);
+  font-size: 1.125rem;
+  line-height: 1.45;
+  padding-bottom: 5rem;
+}
+
+.song-page[data-theme="dark"] {
+  --chart-fg: #e2e8f0;
+  --chart-bg: #0f172a;
+  --chart-muted: #94a3b8;
+  --chart-chord: #93c5fd;
+  --chart-accent: #60a5fa;
+  --chart-border: #334155;
+  --chart-bar-bg: rgba(15, 23, 42, 0.95);
+}
+
+.song-header {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0.75rem 1rem 0;
+}
+
+.song-header a {
+  color: var(--chart-accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.song-header a:hover {
+  text-decoration: underline;
+}
+
+.song {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0.5rem 1rem 1rem;
+}
+
+.song .title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.song .comment {
+  font-weight: 600;
+  color: var(--chart-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+  margin: 1rem 0 0.15rem;
+}
+
+.song .verse {
+  margin-bottom: 0.6rem;
+}
+
+.song .songline {
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.song .songline td {
+  padding: 0;
+  vertical-align: bottom;
+  white-space: pre;
+}
+
+.song .songline .chords td {
+  font-weight: 600;
+  color: var(--chart-chord);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  line-height: 1.1;
+}
+
+.song .image {
+  margin: 0.6rem 0;
+}
+.song .image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Autoscroll control bar ---------- */
+
+.autoscroll-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--chart-bar-bg);
+  border-top: 1px solid var(--chart-border);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+  color: var(--chart-fg);
+}
+
+.autoscroll-bar button {
+  background: transparent;
+  border: 1px solid currentColor;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.15rem;
+  min-width: 2.75rem;
+  line-height: 1;
+  color: inherit;
+}
+
+.autoscroll-bar button:active {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.autoscroll-bar input[type="range"] {
+  flex: 1;
+  min-width: 3rem;
+  accent-color: var(--chart-accent);
+}
+
+.autoscroll-bar .speed-label {
+  font-variant-numeric: tabular-nums;
+  min-width: 3.5rem;
+  text-align: right;
+  font-size: 0.9rem;
+  color: var(--chart-muted);
+}
+
+/* ---------- Print ---------- */
+
 @media print {
   body {
     padding: 0.5in;
@@ -12,5 +159,16 @@
 
   li {
     page-break-inside: avoid;
+  }
+
+  .song-page {
+    padding-bottom: 0;
+    background: white !important;
+    color: black !important;
+  }
+
+  .song-header,
+  .autoscroll-bar {
+    display: none !important;
   }
 }

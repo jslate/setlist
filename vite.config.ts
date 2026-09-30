@@ -37,6 +37,9 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
   ],
+  server: {
+    allowedHosts: ['.ngrok.app', '.ngrok-free.app'],
+  },
   build: {
     rollupOptions: {
       input,
