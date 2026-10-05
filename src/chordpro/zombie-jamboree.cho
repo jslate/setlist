@@ -21,7 +21,7 @@ And they singing
 [Bb] Back to back, [F]belly to belly
 [C7]Don't give a damn, I [F]done dead already
 [Bb]Back to back, [F]belly to belly
-[C7]At the Zombie Jambo[F]ree
+At the [C7]Zombie Jambo[F]ree
 
 I hear you talkin'
 {end_of_chorus}
@@ -45,11 +45,18 @@ And they singing
 
 {comment: Chorus}
 
-{comment: Solos}
-| [F] [C7] [F] | [C7] [F] |
-| [F] [C7] [F] | [C7] [F] |
-| [Bb] | [F] | [C7] | [F] |
-| [Bb] | [F] | [C7] | [F] |
+{start_of_abc: Solos (one verse + chorus) | width=600 staffwidth=1100}
+X:1
+M:4/4
+L:1/8
+K:F style=rhythm
+"F"B3 "C7"B-B2 "F"B2- | B8 | "C7"B3 B-B2 "F"B2- | B8 |
+"F"B3 "C7"B-B2 "F"B2- | B8 | "C7"B3 B-B2 "F"B2- | B8 |
+"Bb"B8 | "F"B8 | "C7"B8 | "F"B8 |
+"Bb"B8 | "F"B8 | "C7"B8 | "F"B8 |
+"Bb"B8 | "F"B8 | "C7"B8 | "F"B8 |
+"Bb"B8 | "F"B8 | "C7"B8 | "F"B8 |]
+{end_of_abc}
 
 {comment: Verse 3}
 {start_of_verse}
@@ -66,3 +73,4 @@ is singing
 {end_of_verse}
 
 {comment: Chorus}
+{comment: repeat}
