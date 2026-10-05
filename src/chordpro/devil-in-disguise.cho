@@ -3,47 +3,38 @@
 {key: D}
 {time: 4/4}
 
-{comment: Verse 1 (slow, crooner)}
+{comment: Intro}
+[G] [A7] [D]
+
+{comment: Chorus(slow, crooner)}
 [D]You look like an angel (look like an angel)
 Walk like an angel (walk like an angel)
 [G]Talk like an angel
 But I got [A7]wise
 
-{comment: Chorus (fast, rock 'n' roll!)}
+{comment: (fast, rock 'n' roll!)}
 You're the devil in dis[D]guise
 Oh, yes, you [Bm]are, devil in dis[D]guise [Bm]
 
-{comment: Verse 2}
+{comment: Verse 1}
 [D]You fooled me with your kisses
 [Bm]You cheated and you schemed
 [D]Heaven knows how you [Bm]lied to me
 You're [G]not the [A7]way you [D]seemed
 
-{comment: Verse 1}
-[D]You look like an angel (look like an angel)
-Walk like an angel (walk like an angel)
-[G]Talk like an angel
-But I got [A7]wise
-
 {comment: Chorus}
-You're the devil in dis[D]guise
-Oh, yes, you [Bm]are, devil in dis[D]guise [Bm]
 
-{comment: Verse 3}
+{comment: Verse 2}
 [D]I thought that I was in heaven
 [Bm]But I was sure surprised
 [D]Heaven help me, I [Bm]didn't see
 The [G]devil [A7]in your [D]eyes
 
-{comment: Verse 1}
-[D]You look like an angel (look like an angel)
-Walk like an angel (walk like an angel)
-[G]Talk like an angel
-But I got [A7]wise
-
 {comment: Chorus}
-You're the devil in dis[D]guise
-Oh, yes, you [Bm]are, devil in dis[D]guise [Bm]
+
+{comment: Solos}
+[D] [Bm] [D] [Bm] {comment: repeat, as needed}
+[G] [A7] [D]
 
 {comment: Outro (repeat & fade)}
 You're the devil in dis[D]guise
