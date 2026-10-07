@@ -7,16 +7,17 @@
 X: 1
 M: 4/4
 L: 1/8
-(3E^F^G|A z z2 z2 (3^F^G^A|B z z2 z2(3^F^G^A|B z (3^F^G^A B z (3E^F^G|A z z2 z4
+K: A
+(3EFG|A z z2 z2 (3FGA|B z z2 z2(3FGA|B z (3FGA B z (3EFG|A z z2 z4
 {end_of_abc}
 
-{comment: Verse 1}
+{comment: Chorus}
 They're [A]creepy and they're [Bm]kooky
 Mys[E7]terious and [A]spooky
 They're all together [Bm]ooky
 The [E7]Addams fami[A]ly
 
-{comment: Verse 2}
+{comment: Verse 1}
 Their [A]house is a mu[Bm]seum
 When [E7]people come to [A]see 'em
 They really are a [Bm]scream
@@ -27,21 +28,31 @@ Neat
 Sweet
 Petite
 
-{comment: Bridge}
+{comment: Verse 2}
 So, [A]put a witch's [Bm]shawl on
 A [E7]broomstick you can [A]crawl on
 We're gonna pay a [Bm]call on
-The [E7]Addams fami[A]ly
 
-{comment: Verse 3}
-They're [A]creepy and they're [Bm]kooky
-Mys[E7]terious and [A]spooky
-They're all together [Bm]ooky
-The [E7]Addams fami[A]ly
+{start_of_abc: end of verse | width=480 staffwidth=1000}
+X: 1
+M: 4/4
+L: 1/4
+K: A
+A/2 | G E F G | A/2 z/2 z z2 |
+w: The Ad-dams Fam-i-ly
+{end_of_abc}
 
-{comment: Finger snap with these words}
-Strange
-Deranged
-The [E7]Addams fami[A]ly
+{comment: Melody on sax}
 
-{comment: Repeat opening figure with weird sounds between}
+{comment: Repeat opening figure with weird sounds between 4x}
+
+{start_of_abc: Weird fig | width=480 staffwidth=1000}
+X: 1
+M: 6/8
+L: 1/8
+K: A
+EFG|A2 =C' EFG|A2 =C' EFG|A z z2 z4
+{end_of_abc}
+
+{comment: Repeat opening figure with weird sounds between 2x}
+{comment: whistle on last ascending run}
