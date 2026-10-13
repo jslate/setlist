@@ -12,7 +12,11 @@
     "gen:setlist": "node scripts/gen-setlist.cjs",
     "gen:setlist:fullband": "node scripts/gen-setlist.cjs --fullband",
     "gen:setlist:halloween": "node scripts/gen-setlist.cjs --halloween",
-    "gen:all": "npm run gen:pdf && npm run gen:html && npm run gen:setlist && npm run gen:setlist:fullband && npm run gen:setlist:halloween"
+    "gen:setlist:bb": "node scripts/gen-setlist.cjs --bb",
+    "gen:setlist:eb": "node scripts/gen-setlist.cjs --eb",
+    "gen:setlist:halloween:bb": "node scripts/gen-setlist.cjs --halloween --bb",
+    "gen:setlist:halloween:eb": "node scripts/gen-setlist.cjs --halloween --eb",
+    "gen:all": "npm run gen:pdf && npm run gen:html && npm run gen:setlist && npm run gen:setlist:fullband && npm run gen:setlist:halloween && npm run gen:setlist:bb && npm run gen:setlist:eb && npm run gen:setlist:halloween:bb && npm run gen:setlist:halloween:eb"
   },
   "devDependencies": {
     "vite": "^7.0.0"

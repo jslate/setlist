@@ -87,6 +87,7 @@ function songPdfDeps({ slug, chordDir, dataPath }) {
     { path: dataPath, jsonFind: { key: 'slug', value: slug } },
     { path: path.resolve(__dirname, 'prependNotes.cjs') },
     { path: path.resolve(__dirname, 'renderAbc.cjs') },
+    { path: path.resolve(__dirname, 'buildSongPdf.cjs') },
     { path: path.resolve(__dirname, 'gen-pdf.cjs') },
     { path: path.resolve(__dirname, 'gen-setlist.cjs') },
     { path: __filename },

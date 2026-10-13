@@ -263,7 +263,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "prerendered": true,
     "hasHtml": false,
     "alternates": [
@@ -276,7 +276,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "hasHtml": true
   },
   {
@@ -285,7 +285,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "hasHtml": true
   },
   {
@@ -294,7 +294,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "prerendered": true,
     "hasHtml": false
   },
@@ -304,7 +304,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "No chords yet, coming soon",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "hasHtml": true
   },
   {
@@ -313,7 +313,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "hasHtml": true
   },
   {
@@ -322,7 +322,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "prerendered": true,
     "hasHtml": false,
     "alternates": [
@@ -335,7 +335,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "hasHtml": true
   },
   {
@@ -344,7 +344,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "hasHtml": true
   },
   {
@@ -353,7 +353,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "hasHtml": true
   },
   {
@@ -362,7 +362,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "hasHtml": true
   },
   {
@@ -371,7 +371,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "hasHtml": true
   },
   {
@@ -379,7 +379,7 @@
     "title": "Zombie Jamboree (Back To Back) (Harry Belafonte)",
     "instrumentation": "",
     "audio": "",
-    "tags": ["halloween"],
+    "tags": ["halloween", "transpose"],
     "hasHtml": true
   }
 ]

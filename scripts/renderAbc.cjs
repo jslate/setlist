@@ -54,12 +54,14 @@ function extractAbcBlocks(content) {
   return blocks;
 }
 
-function hashAbc(label, body, params) {
+function hashAbc(label, body, params, visualTranspose = 0) {
   const paramStr = Object.entries(params).sort().map(([k, v]) => `${k}=${v}`).join(',');
-  return crypto.createHash('sha1').update(label + '\n' + paramStr + '\n' + body).digest('hex').slice(0, 10);
+  let input = label + '\n' + paramStr + '\n' + body;
+  if (visualTranspose !== 0) input += '\nt=' + visualTranspose;
+  return crypto.createHash('sha1').update(input).digest('hex').slice(0, 10);
 }
 
-async function renderAbcBlockToPng(label, body, params, outPath) {
+async function renderAbcBlockToPng(label, body, params, outPath, visualTranspose = 0) {
   const abcjs = ensureAbcjs();
   const sharp = require('sharp');
 
@@ -75,6 +77,7 @@ async function renderAbcBlockToPng(label, body, params, outPath) {
     paddingright: 0,
   };
   if (params.scale) opts.scale = Number(params.scale);
+  if (visualTranspose !== 0) opts.visualTranspose = visualTranspose;
   abcjs.renderAbc('abc-paper', abc, opts);
 
   const svgEl = paper.querySelector('svg');
@@ -93,7 +96,7 @@ async function renderAbcBlockToPng(label, body, params, outPath) {
     .toFile(outPath);
 }
 
-async function preprocessAbc(content, { slug, renderedDir }) {
+async function preprocessAbc(content, { slug, renderedDir, visualTranspose = 0 }) {
   const blocks = extractAbcBlocks(content);
   if (blocks.length === 0) return { content, images: [] };
 
@@ -102,11 +105,11 @@ async function preprocessAbc(content, { slug, renderedDir }) {
   const replacements = [];
   const images = [];
   for (const block of blocks) {
-    const hash = hashAbc(block.label, block.body, block.params);
+    const hash = hashAbc(block.label, block.body, block.params, visualTranspose);
     const filename = `${slug}-${hash}.png`;
     const absPath = path.join(renderedDir, filename);
     if (!fs.existsSync(absPath)) {
-      await renderAbcBlockToPng(block.label, block.body, block.params, absPath);
+      await renderAbcBlockToPng(block.label, block.body, block.params, absPath, visualTranspose);
     }
     const attrs = [`src="${absPath}"`];
     const width = block.params.width ? Number(block.params.width) : DEFAULTS.width;
