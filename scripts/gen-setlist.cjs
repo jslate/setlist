@@ -5,6 +5,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 const { copyIfChanged, needsRebuild, markBuilt, songPdfDeps } = require('./generator-utils.cjs');
 const { buildSongPdf, TRANSPOSE } = require('./buildSongPdf.cjs');
+const { songKeys } = require('./songKeys.cjs');
 
 const chordDir = path.resolve(__dirname, '../src/chordpro');
 const pdfDir = path.resolve(__dirname, '../pdf');
@@ -33,16 +34,20 @@ async function main() {
     .filter(song => !song.holding)
     .filter(song => !fullBand || song.instrumentation === 'Full band')
     .filter(song => !halloween || (Array.isArray(song.tags) && song.tags.includes('halloween')))
-    .filter(song => !variantFlag || (Array.isArray(song.tags) && song.tags.includes('transpose')));
+    .filter(song => !variantFlag || songKeys(song).includes(variantFlag));
 
   fs.mkdirSync(pdfDir, { recursive: true });
 
   const srcPdfDir = path.resolve(__dirname, '../src/pdf');
-  if (fs.existsSync(srcPdfDir)) {
-    fs.readdirSync(srcPdfDir)
+  for (const sub of ['', 'bb', 'eb']) {
+    const srcDir = sub ? path.join(srcPdfDir, sub) : srcPdfDir;
+    if (!fs.existsSync(srcDir)) continue;
+    const dstDir = sub ? path.join(pdfDir, sub) : pdfDir;
+    fs.mkdirSync(dstDir, { recursive: true });
+    fs.readdirSync(srcDir)
       .filter(file => file.endsWith('.pdf'))
       .forEach(file => {
-        copyIfChanged(path.join(srcPdfDir, file), path.join(pdfDir, file));
+        copyIfChanged(path.join(srcDir, file), path.join(dstDir, file));
       });
   }
 

@@ -263,7 +263,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween", "transpose"],
+    "tags": ["halloween"],
     "prerendered": true,
     "hasHtml": false,
     "alternates": [
@@ -294,7 +294,7 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween", "transpose"],
+    "tags": ["halloween"],
     "prerendered": true,
     "hasHtml": false
   },
@@ -322,12 +322,10 @@
     "instrumentation": "",
     "audio": "",
     "notes": "",
-    "tags": ["halloween", "transpose"],
+    "tags": ["halloween"],
     "prerendered": true,
     "hasHtml": false,
-    "alternates": [
-      { "label": "Bb", "file": "mysterious-mose-Bb.pdf" }
-    ]
+    "keys": ["concert", "bb"]
   },
   {
     "slug": "addams-family",

@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { copyIfChanged, needsRebuild, markBuilt, songPdfDeps } = require('./generator-utils.cjs');
 const { buildSongPdf, TRANSPOSE } = require('./buildSongPdf.cjs');
+const { songKeys } = require('./songKeys.cjs');
 
 const chordDir = path.resolve(__dirname, '../src/chordpro');
 const pdfDir   = path.resolve(__dirname, '../pdf');
@@ -15,16 +16,24 @@ const VARIANTS = [
   { name: 'eb',      dir: 'eb', transpose: TRANSPOSE.eb,    requiresTag: 'transpose' },
 ];
 
+function copyPrerenderedPdfs(srcPdfDir, variantSubdir) {
+  const srcDir = variantSubdir ? path.join(srcPdfDir, variantSubdir) : srcPdfDir;
+  if (!fs.existsSync(srcDir)) return;
+  const dstDir = variantSubdir ? path.join(pdfDir, variantSubdir) : pdfDir;
+  fs.mkdirSync(dstDir, { recursive: true });
+  fs.readdirSync(srcDir)
+    .filter(file => file.endsWith('.pdf'))
+    .forEach(file => {
+      copyIfChanged(path.join(srcDir, file), path.join(dstDir, file));
+    });
+}
+
 async function main() {
   fs.mkdirSync(pdfDir, { recursive: true });
 
   const srcPdfDir = path.resolve(__dirname, '../src/pdf');
-  if (fs.existsSync(srcPdfDir)) {
-    fs.readdirSync(srcPdfDir)
-      .filter(file => file.endsWith('.pdf'))
-      .forEach(file => {
-        copyIfChanged(path.join(srcPdfDir, file), path.join(pdfDir, file));
-      });
+  for (const v of VARIANTS) {
+    copyPrerenderedPdfs(srcPdfDir, v.dir);
   }
 
   let songs = [];
@@ -39,10 +48,11 @@ async function main() {
   for (const file of files) {
     const slug = path.basename(file, '.cho');
     const song = songs.find(s => s.slug === slug);
-    const tags = (song && Array.isArray(song.tags)) ? song.tags : [];
+    const keys = songKeys(song);
 
     for (const v of VARIANTS) {
-      if (v.requiresTag && !tags.includes(v.requiresTag)) continue;
+      if (!keys.includes(v.name)) continue;
+      if (song && song.prerendered) continue;
 
       const outPath = path.join(pdfDir, v.dir, `${slug}.pdf`);
       const deps = [

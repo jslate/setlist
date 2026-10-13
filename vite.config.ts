@@ -7,28 +7,42 @@ import fs from 'fs'
 const htmlDir = resolve(__dirname, 'html')
 const pdfDir = resolve(__dirname, 'pdf')
 
-const songHTMLFiles = fs.existsSync(htmlDir)
-  ? fs.readdirSync(htmlDir).filter(f => f.endsWith('.html'))
-  : []
+function collectFiles(baseDir: string, extension: string, subdirs: string[]): { subdir: string; file: string }[] {
+  const out: { subdir: string; file: string }[] = []
+  for (const sub of subdirs) {
+    const dir = sub ? resolve(baseDir, sub) : baseDir
+    if (!fs.existsSync(dir)) continue
+    for (const file of fs.readdirSync(dir)) {
+      if (!file.endsWith(extension)) continue
+      if (file.startsWith('__toc__')) continue
+      out.push({ subdir: sub, file })
+    }
+  }
+  return out
+}
 
-const songPDFFiles = fs.existsSync(pdfDir)
-  ? fs.readdirSync(pdfDir).filter(f => f.endsWith('.pdf') && !f.startsWith('__toc__'))
-  : []
+const variantSubdirs = ['', 'bb', 'eb']
+const songHTMLs = collectFiles(htmlDir, '.html', variantSubdirs)
+const songPDFs = collectFiles(pdfDir, '.pdf', variantSubdirs)
 
 const input = {
   main: resolve(__dirname, 'index.html'),
   halloween: resolve(__dirname, 'halloween.html'),
   printableSongList: resolve(__dirname, 'printable-song-list.html'),
   ...Object.fromEntries(
-    songHTMLFiles.map(file => {
+    songHTMLs.map(({ subdir, file }) => {
       const name = file.replace(/\.html$/, '')
-      return [`html/${name}`, resolve(htmlDir, file)]
+      const key = subdir ? `html/${subdir}/${name}` : `html/${name}`
+      const path = subdir ? resolve(htmlDir, subdir, file) : resolve(htmlDir, file)
+      return [key, path]
     })
   ),
   ...Object.fromEntries(
-    songPDFFiles.map(file => {
+    songPDFs.map(({ subdir, file }) => {
       const name = file.replace(/\.pdf$/, '')
-      return [`pdf/${name}`, resolve(pdfDir, file)]
+      const key = subdir ? `pdf/${subdir}/${name}` : `pdf/${name}`
+      const path = subdir ? resolve(pdfDir, subdir, file) : resolve(pdfDir, file)
+      return [key, path]
     })
   ),
 }

@@ -8,14 +8,12 @@ X: 1
 M: 4/4
 L: 1/8
 K: A
-(3EFG|A z z2 z2 (3FGA|B z z2 z2(3FGA|B z (3FGA B z (3EFG|A z z2 z4
+(3EFG|A z z2 z2 (3FG^A|B z z2 z2(3FG^A|B z (3FG^A B z (3EFG|A z z2 z4
 {end_of_abc}
 
 {comment: Chorus}
-They're [A]creepy and they're [Bm]kooky
-Mys[E7]terious and [A]spooky
-They're all together [Bm]ooky
-The [E7]Addams fami[A]ly
+They're [A]creepy and they're [Bm]kooky Mys[E7]terious and [A]spooky
+They're all together [Bm]ooky The [E7]Addams fami[A]ly
 
 {comment: Verse 1}
 Their [A]house is a mu[Bm]seum
