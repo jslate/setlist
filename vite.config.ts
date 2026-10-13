@@ -28,6 +28,7 @@ const songPDFs = collectFiles(pdfDir, '.pdf', variantSubdirs)
 const input = {
   main: resolve(__dirname, 'index.html'),
   halloween: resolve(__dirname, 'halloween.html'),
+  halloweenHorns: resolve(__dirname, 'halloween-horns.html'),
   printableSongList: resolve(__dirname, 'printable-song-list.html'),
   ...Object.fromEntries(
     songHTMLs.map(({ subdir, file }) => {

@@ -1,0 +1,15 @@
+{
+  "halloween-horns": {
+    "title": "Halloween — Horn Charts",
+    "subtitle": "Zoey, Oct 30",
+    "intro": "Suggested: tenor sax (B♭) for most. Alto sax (E♭) for The Blob. Flute (concert) for ’Taint No Sin.",
+    "filterTag": "halloween",
+    "defaultKey": "bb",
+    "fullSetlistPdf": "setlist-halloween-bb.pdf",
+    "zipFile": "halloween-horns.zip",
+    "perSongKey": {
+      "taint-no-sin": "concert",
+      "the-blob": "eb"
+    }
+  }
+}

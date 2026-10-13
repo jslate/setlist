@@ -266,6 +266,7 @@
     "tags": ["halloween"],
     "prerendered": true,
     "hasHtml": false,
+    "keys": ["concert", "eb"],
     "alternates": [
       { "label": "Rhythm only", "file": "the-blob-rhythm.pdf" }
     ]
