@@ -1,20 +1,20 @@
-import { defineConfig } from 'vite'
+import { defineConfig, Plugin } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 
 import { resolve } from 'path'
 import fs from 'fs'
+import path from 'path'
 
 const htmlDir = resolve(__dirname, 'html')
 const pdfDir = resolve(__dirname, 'pdf')
 
-function collectFiles(baseDir: string, extension: string, subdirs: string[]): { subdir: string; file: string }[] {
+function collectHtmlFiles(baseDir: string, subdirs: string[]): { subdir: string; file: string }[] {
   const out: { subdir: string; file: string }[] = []
   for (const sub of subdirs) {
     const dir = sub ? resolve(baseDir, sub) : baseDir
     if (!fs.existsSync(dir)) continue
     for (const file of fs.readdirSync(dir)) {
-      if (!file.endsWith(extension)) continue
-      if (file.startsWith('__toc__')) continue
+      if (!file.endsWith('.html')) continue
       out.push({ subdir: sub, file })
     }
   }
@@ -22,8 +22,7 @@ function collectFiles(baseDir: string, extension: string, subdirs: string[]): { 
 }
 
 const variantSubdirs = ['', 'bb', 'eb']
-const songHTMLs = collectFiles(htmlDir, '.html', variantSubdirs)
-const songPDFs = collectFiles(pdfDir, '.pdf', variantSubdirs)
+const songHTMLs = collectHtmlFiles(htmlDir, variantSubdirs)
 
 const input = {
   main: resolve(__dirname, 'index.html'),
@@ -38,19 +37,34 @@ const input = {
       return [key, path]
     })
   ),
-  ...Object.fromEntries(
-    songPDFs.map(({ subdir, file }) => {
-      const name = file.replace(/\.pdf$/, '')
-      const key = subdir ? `pdf/${subdir}/${name}` : `pdf/${name}`
-      const path = subdir ? resolve(pdfDir, subdir, file) : resolve(pdfDir, file)
-      return [key, path]
-    })
-  ),
+}
+
+// Copy pdf/ tree into dist/pdf/ at build time, preserving subdirs.
+// (Vite's rollup input list can't preserve subdirs for non-HTML entries,
+// so we handle PDFs separately as plain static assets.)
+function copyPdfTree(): Plugin {
+  return {
+    name: 'copy-pdf-tree',
+    apply: 'build',
+    writeBundle: {
+      sequential: true,
+      handler() {
+        if (!fs.existsSync(pdfDir)) return
+        const outDir = resolve(__dirname, 'dist', 'pdf')
+        fs.mkdirSync(outDir, { recursive: true })
+        fs.cpSync(pdfDir, outDir, {
+          recursive: true,
+          filter: (src) => !path.basename(src).startsWith('__toc__'),
+        })
+      },
+    },
+  }
 }
 
 export default defineConfig({
   plugins: [
     tailwindcss(),
+    copyPdfTree(),
   ],
   server: {
     allowedHosts: ['.ngrok.app', '.ngrok-free.app'],
@@ -59,14 +73,7 @@ export default defineConfig({
     rollupOptions: {
       input,
       output: {
-        assetFileNames: assetInfo => {
-          if (assetInfo.names[0].endsWith('.pdf')) {
-            // keep original name under dist/pdf/
-            return 'pdf/[name][extname]'
-          }
-          // fallback for other assets
-          return 'assets/[name]-[hash][extname]'
-        }
+        assetFileNames: 'assets/[name]-[hash][extname]',
       }
     },
   },
